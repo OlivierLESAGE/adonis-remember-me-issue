@@ -29,7 +29,7 @@ export default class AuthController {
     const normalizeEmail = validator.normalizeEmail(payload.email) || payload.email
 
     const user = await User.verifyCredentials(normalizeEmail, payload.password)
-    await auth.use('web').login(user)
+    await auth.use('web').login(user, true)
 
     return user
   }
